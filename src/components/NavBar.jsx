@@ -1,13 +1,6 @@
 //Material UI
-import {
-  Toolbar,
-  AppBar,
-  IconButton,
-  Typography,
-  Button,
-  Hidden,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Toolbar, AppBar, Typography } from "@mui/material";
+
 import { makeStyles } from "@mui/styles";
 
 //Components
@@ -17,30 +10,22 @@ import Search from "./Search";
 import "./NavBar.scss";
 
 import { useHistory } from "react-router-dom";
-import MovieContext from "./context/MovieContext";
-import { useContext } from "react";
+
 import { Box } from "@mui/system";
+import DynamicSearch from "./DynamicSearch";
+import { MovieSearchProvider } from "./context/MovieSearchContext";
 
 const useStyles = makeStyles((theme) => ({
   offset: theme.mixins.toolbar,
 }));
 
-const NavBar = (props) => {
+const NavBar = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const { overView, inView } = useContext(MovieContext);
-
-  const checkInView = () => {
-    if (overView && !inView) {
-      return "navbar overView__nav";
-    } else {
-      return "navbar";
-    }
-  };
   return (
     <div>
-      <AppBar sx={{ boxShadow: "none" }} className={checkInView()}>
+      <AppBar sx={{ boxShadow: "none" }}>
         <Toolbar>
           <Box className="navBar__logo">
             <div
@@ -56,7 +41,12 @@ const NavBar = (props) => {
               </Typography>
             </div>
           </Box>
-          <Search />
+          <MovieSearchProvider>
+            <div className="navBar__search">
+              <Search />
+              <DynamicSearch />
+            </div>
+          </MovieSearchProvider>
         </Toolbar>
       </AppBar>
       <div className={classes.offset} />

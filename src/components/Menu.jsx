@@ -14,7 +14,6 @@ import { Box } from "@mui/system";
 import { categories, typeMovies } from "./data/moviesData";
 
 //Styles
-import "./Menu.scss";
 
 const Menu = ({ isOpen, setIsOpen }) => {
   const theme = useTheme();

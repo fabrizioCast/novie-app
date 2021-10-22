@@ -1,0 +1,40 @@
+.dynamicSearch {
+  width: 90%;
+  border-radius: 10px;
+  background-color: #141a32;
+  position: absolute;
+  min-height: max-content;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.dynamicSearch__item {
+  display: flex;
+  gap: 10px;
+  padding: 5px 0;
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    border-radius: 5px;
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.item-info__rating {
+  color: #edb709;
+}
+
+.dynamicSearch__item:last-of-type {
+  padding-bottom: 0;
+}
