@@ -1,0 +1,28 @@
+.navBar__items {
+  font-weight: bolder;
+  transition: color 0.3s ease-in-out;
+  color: #8da0bc;
+  &:hover {
+    cursor: pointer;
+    color: #007aff;
+  }
+  p {
+    font-size: 25px;
+  }
+}
+
+.navBar__logo {
+  flex-grow: 1;
+  color: #fff;
+  .navBar__logo-fix {
+    width: max-content;
+    display: flex;
+    align-items: center;
+  }
+  .navBar__icon {
+    margin-right: 10px;
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}

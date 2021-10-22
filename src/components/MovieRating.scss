@@ -1,0 +1,19 @@
+.overview__rating,
+.overinfo__star {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.overinfo__star svg {
+  font-size: 15px;
+}
+
+.overview__rating {
+  .divider {
+    height: 15px;
+    width: 1px;
+    background: #8da0bc;
+  }
+  gap: 5px;
+}
