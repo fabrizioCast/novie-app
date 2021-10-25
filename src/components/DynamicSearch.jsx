@@ -1,27 +1,34 @@
-//Styles
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+// React.JS
 import { useContext, useEffect, useState } from "react";
-import MovieSearchContext from "./context/MovieSearchContext";
+
+// React Router
 import { useHistory } from "react-router-dom";
+
+// Styles
 import "./DynamicSearch.scss";
+
+// Material-UI
+import { CircularProgress, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+
+// Context
+import MovieSearchContext from "./context/MovieSearchContext";
 
 const DynamicSearch = () => {
   const history = useHistory();
-  const {
-    dynamicSearch,
-    setDynamicSearch,
-    showDynamicSearch,
-    setShowDynamicSearch,
-  } = useContext(MovieSearchContext);
+  const { dynamicSearch, setDynamicSearch, showDynamicSearch } =
+    useContext(MovieSearchContext);
   const [response, setResponse] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const url = `https://api.themoviedb.org/3/search/movie?api_key=a70cdf7150610596a2441d3771de20cf&language=en-US&query=${dynamicSearch}&page=1`;
 
   useEffect(() => {
     if (dynamicSearch.length > 2) {
+      // Comienza a buscar desde las 2 palabras, para mayor rendimiento.
       const getData = async () => {
         try {
+          setLoading(true);
           const res = await fetch(url);
           if (!res.ok) {
             let error = {
@@ -31,6 +38,7 @@ const DynamicSearch = () => {
           }
           const json = await res.json();
           setResponse(json);
+          setLoading(false);
         } catch (error) {
           console.log(error);
         }
@@ -42,16 +50,23 @@ const DynamicSearch = () => {
   }, [dynamicSearch, url]);
 
   const handleClick = (id) => {
-    setDynamicSearch(""); //Reset input value
+    setDynamicSearch(""); // Resetea el valor del input de busqueda.
     history.push(`/movie/${id}`);
   };
 
   return (
     <div>
+      {loading && (
+        <Box className="dynamicSearch">
+          <div className="dynamicSearch__loading">
+            <CircularProgress sx={{ margin: "0 auto" }} />
+          </div>
+        </Box>
+      )}
       {response && showDynamicSearch && (
         <Box className="dynamicSearch">
           {response.results.map((el, index) => {
-            if (index > 5) {
+            if (index > 4) {
               return null;
             }
             return (

@@ -1,6 +1,6 @@
 import { InputBase, styled } from "@mui/material";
 import { alpha } from "@mui/system";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import MovieSearchContext from "./context/MovieSearchContext";
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({

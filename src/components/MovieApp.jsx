@@ -4,7 +4,6 @@ import { MovieProvider } from "./context/MovieContext";
 
 //Components
 import MovieHeader from "./MovieHeader";
-
 import MovieHome from "./MovieHome";
 import MovieOverview from "./MovieOverview";
 

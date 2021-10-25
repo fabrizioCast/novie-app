@@ -1,11 +1,11 @@
 .dynamicSearch {
-  width: 90%;
+  width: 95%;
   border-radius: 10px;
   background-color: #141a32;
   position: absolute;
   min-height: max-content;
   padding: 10px;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
 }
 
@@ -37,4 +37,11 @@
 
 .dynamicSearch__item:last-of-type {
   padding-bottom: 0;
+}
+
+.dynamicSearch__loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
